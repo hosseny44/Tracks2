@@ -1,0 +1,69 @@
+package com.example.tracks;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import android.util.Patterns;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+
+
+public class SignupFragment extends Fragment {
+
+    private EditText etUsername, etPassword;
+    private Button btnSignup;
+    private FirebaseServices fbs ;
+    public SignupFragment(){}
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_signup, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        fbs = FirebaseServices.getInstance();
+        etUsername = getView().findViewById(R.id.etUsernameSignup);
+        etPassword = getView().findViewById(R.id.etPasswordSignup);
+        btnSignup = getView().findViewById(R.id.btnSignupSignup);
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                if (username.trim().isEmpty() && password.trim().isEmpty()) {
+                    Toast.makeText( getActivity(),"Some fields are empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                fbs.getAuth().createUserWithEmailAndPassword(username, password)
+                        .addOnCompleteListener
+                                (getActivity(), new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            // TODO : decide what to do
+                                        }
+                                        else {
+                                            // TODO : decide what to do
+                                        }
+                                    }
+                                });
+            }
+        });
+
+
+    }}

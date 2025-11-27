@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "409247520300",
+    "project_id": "tracks1-86b7d",
+    "storage_bucket": "tracks1-86b7d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409247520300:android:360fa3664fc17167d8e389",
+        "android_client_info": {
+          "package_name": "com.example.tracks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8qz3O7lpSXWjiLMnX6gPA3uzHAz4210Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
