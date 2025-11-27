@@ -86,7 +86,7 @@ public class TrackListFragment extends Fragment {
     }
 
     private void loadSmellsFromFirebase() {
-        fbs.getFirestore().collection("memories" )
+        fbs.getFirestore().collection("F1Tracks" )
 
                 .get()
                 .addOnCompleteListener(task -> {

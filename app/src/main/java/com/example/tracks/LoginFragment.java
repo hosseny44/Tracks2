@@ -40,7 +40,8 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         etUsername = getView().findViewById(R.id.etUsernameLogin);
         etPassword = getView().findViewById(R.id.etPasswordLogin);
@@ -48,36 +49,49 @@ public class LoginFragment extends Fragment {
         tvSignupLink = getView().findViewById(R.id.tvSignupLogin);
         tvForgotpassword = getView().findViewById(R.id.tvForgotPasswordLogin);
 
-        tvForgotpassword.setOnClickListener(new View.OnClickListener() {
+        tvForgotpassword.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 gotoForgotPasswordFragment();
             }
         });
-        tvSignupLink.setOnClickListener(new View.OnClickListener() {
+        tvSignupLink.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 gotoSignupFragment();
             }
         });
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 // data validation
                 fbs = FirebaseServices.getInstance();
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                if (username.trim().isEmpty() && password.trim().isEmpty()) {
+                if (username.trim().isEmpty() && password.trim().isEmpty())
+                {
                     Toast.makeText(getActivity(), "some fields are empty!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Login procedure
                 fbs.getAuth().signInWithEmailAndPassword(username, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if (task.isSuccessful())
+                        {
                             Toast.makeText(getActivity(), "you have successfully login!", Toast.LENGTH_SHORT).show();
-                        } else {
+                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.frameLayout, new AdminFragment());
+                            ft.commit();
+                        }
+                        else
+                        {
 
                             Toast.makeText(getActivity(), "failed to login!check user or password!", Toast.LENGTH_SHORT).show();
                         }
