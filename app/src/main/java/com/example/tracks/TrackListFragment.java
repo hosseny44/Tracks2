@@ -27,7 +27,6 @@ public class TrackListFragment extends Fragment {
     private TrackListAdapter adapter;
     private FirebaseServices fbs;
     private ImageView ivProfile;
-
     private ArrayList<TrackItem> trackList = new ArrayList<>();
     private ArrayList<TrackItem> filteredList = new ArrayList<>();
 
@@ -49,13 +48,12 @@ public class TrackListFragment extends Fragment {
     private void init() {
         recyclerView = getView().findViewById(R.id.rvTracklist);
         searchView = getView().findViewById(R.id.srchViewTrack);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-
         fbs = FirebaseServices.getInstance();
-
         adapter = new TrackListAdapter(getActivity(), trackList);
+
+
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(position -> {

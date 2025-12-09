@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTrackFragment">
+    android:fillViewport="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -17,34 +14,46 @@
             android:id="@+id/editTrackName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Track Name" />
+            android:hint="Track Name"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editRaceDistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Race Distance" />
+            android:hint="Race Distance"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editNumberOfLaps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Number of Laps" />
+            android:hint="Number of Laps"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editFirstGrandPrix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Grand Prix" />
+            android:hint="First Grand Prix"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/btnAddTrack"
+            android:text="Add Track"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add Track" />
+            android:layout_marginTop="16dp"/>
+
+        <ImageView
+            android:id="@+id/trackImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:contentDescription="drawable.default_track"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_foreground" />
 
     </LinearLayout>
 
-
-</FrameLayout>
+</ScrollView>

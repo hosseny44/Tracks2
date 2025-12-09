@@ -14,44 +14,84 @@
 
         <EditText
             android:id="@+id/etUsernameSignup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:hint="Email"
+            android:ems="10"
+            android:hint="username...."
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:minHeight="48dp"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="275dp"
+            tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/etPasswordSignup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Password"
+            android:ems="10"
+            android:hint="password...."
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUsernameSignup" />
+            android:minHeight="48dp"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="338dp"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btnSignupSignup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:backgroundTint="#6F7F8F"
             android:text="SIGNUP"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPasswordSignup" />
+            tools:layout_editor_absoluteX="230dp"
+            tools:layout_editor_absoluteY="626dp"
+            tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/btnAdmin"
-            android:layout_width="0dp"
+        <EditText
+            android:id="@+id/etFirstnameSignupFragment"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Go To Admin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSignupSignup" />
+            android:ems="10"
+            android:hint="firstname..."
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="153dp" />
+
+        <EditText
+            android:id="@+id/etLastnameSignupFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="lastname..."
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="221dp"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/etConfirmPasswordSignupFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="confirm password..."
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="382dp" />
+
+        <EditText
+            android:id="@+id/etAddressSignupFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="address..."
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="429dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
