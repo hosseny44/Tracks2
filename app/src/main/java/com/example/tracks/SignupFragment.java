@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -45,7 +46,8 @@ public class SignupFragment extends Fragment {
             public void onClick(View v) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                if (username.trim().isEmpty() && password.trim().isEmpty()) {
+                if (username.trim().isEmpty() && password.trim().isEmpty())
+                {
                     Toast.makeText( getActivity(),"Some fields are empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -54,8 +56,13 @@ public class SignupFragment extends Fragment {
                                 (getActivity(), new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()){
-                                            // TODO : decide what to do
+                                        if (task.isSuccessful())
+                                        {
+                                                Toast.makeText(getActivity(), "you have successfully login!", Toast.LENGTH_SHORT).show();
+                                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                                ft.replace(R.id.frameLayout, new AdminFragment());
+                                                ft.commit();
+
                                         }
                                         else {
                                             // TODO : decide what to do

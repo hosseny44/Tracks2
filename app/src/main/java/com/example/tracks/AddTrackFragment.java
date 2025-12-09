@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -21,6 +25,7 @@ public class AddTrackFragment extends Fragment {
 
     private EditText editTrackName, editRaceDistance, editNumberOfLaps, editFirstGrandPrix;
     private Button btnAddTrack;
+
     private FirebaseFirestore db;
 
     public AddTrackFragment() {
@@ -41,12 +46,17 @@ public class AddTrackFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
-        btnAddTrack.setOnClickListener(v -> addTrackToFirestore());
 
+        btnAddTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get data from screen
+                addToFirebase();
+            }});
         return view;
     }
 
-    private void addTrackToFirestore() {
+    private void addToFirebase() {
         String trackName = editTrackName.getText().toString().trim();
         String raceDistance = editRaceDistance.getText().toString().trim();
         String numberOfLaps = editNumberOfLaps.getText().toString().trim();
@@ -57,17 +67,21 @@ public class AddTrackFragment extends Fragment {
             Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Hadi is helping Wajd play fortnite
         F1Track track = new F1Track(trackName, raceDistance, numberOfLaps, firstGrandPrix);
 
-        db.collection("F1Tracks")
-                .add(track)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getContext(), "Track added successfully!", Toast.LENGTH_SHORT).show();
-                    clearFields();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        db.collection("tracks").add(track).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
+        {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Toast.makeText(getActivity(), "Successfully added your hotel!", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("Failed to add your hotel: ", e.getMessage());
+            }
+        });
     }
 
     private void clearFields() {
